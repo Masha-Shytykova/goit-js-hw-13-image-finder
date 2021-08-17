@@ -21,7 +21,7 @@ function onSearch(e) {
   apiService.fetchImages().then(hits => {
     clearSearchResultList();
     appendCardsMarkup(hits);
-
+    refs.loadMoreBtn.classList.toggle('is-hidden');
     refs.loadMoreBtn.scrollIntoView({
       behavior: 'smooth',
       block: 'end',
