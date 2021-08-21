@@ -17,11 +17,18 @@ function onSearch(e) {
   e.preventDefault();
 
   apiService.query = e.currentTarget.elements.query.value;
+
+  if (apiService.query === '' || apiService.query === ' ') {
+    return alert('Enter your request');
+  }
   apiService.resetPage();
   apiService.fetchImages().then(hits => {
     clearSearchResultList();
     appendCardsMarkup(hits);
-    refs.loadMoreBtn.classList.toggle('is-hidden');
+    if (hits.length === 12) {
+      refs.loadMoreBtn.classList.toggle('is-hidden');
+    }
+
     refs.loadMoreBtn.scrollIntoView({
       behavior: 'smooth',
       block: 'end',
@@ -30,10 +37,15 @@ function onSearch(e) {
 }
 
 function onLoadMore() {
-  apiService.fetchImages().then(appendCardsMarkup);
-  refs.loadMoreBtn.scrollIntoView({
-    behavior: 'smooth',
-    block: 'end',
+  apiService.fetchImages().then(hits => {
+    appendCardsMarkup(hits);
+    refs.loadMoreBtn.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+    if (hits.length !== 12) {
+      refs.loadMoreBtn.classList.toggle('is-hidden');
+    }
   });
 }
 

@@ -1,5 +1,6 @@
 body {
   margin-right: 30px;
+  margin-top: 15px;
 }
 img {
   display: block;
@@ -18,6 +19,12 @@ ul {
   margin-bottom: 24px;
 }
 
+.search-input {
+  height: 35px;
+
+  margin-right: 10px;
+}
+
 .button {
   display: block;
   margin-left: auto;
@@ -34,6 +41,15 @@ ul {
 .stats {
   display: flex;
   justify-content: center;
+}
+.stats-item {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.material-icons {
+  margin-right: 5px;
 }
 
 .gallery {
