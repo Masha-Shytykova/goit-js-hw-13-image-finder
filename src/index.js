@@ -18,7 +18,7 @@ function onSearch(e) {
 
   apiService.query = e.currentTarget.elements.query.value;
 
-  if (apiService.query === '' || apiService.query === ' ') {
+  if (apiService.query.trim() === '') {
     return alert('Enter your request');
   }
   apiService.resetPage();
